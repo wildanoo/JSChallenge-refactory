@@ -8,5 +8,5 @@ function reverse(n){
     }
     return reversed;
 }
-
+document.getElementById("result").innerHTML = reverse(data);
 console.log(reverse(data));
