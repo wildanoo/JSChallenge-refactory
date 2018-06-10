@@ -1,25 +1,30 @@
-const daftar_produk = {
-    "001" : {"kode_produk" : "001", "nama" : "Iphone X", "harga" : 15000000, "kuantitas" : 1 },
-    "002" : {"kode_produk" : "002","nama" : "Asus Zenfone 5", "harga" : 4000000, "kuantitas" : 1 },
-    "003" : {"kode_produk" : "003","nama" : "Xiaomi Redmi Note 5", "harga" : 3000000, "kuantitas" : 1 },
-    "004" : {"kode_produk" : "004","nama" : "Samsung Galaxy A6+", "harga" : 4500000, "kuantitas" : 1 },
-    "005" : {"kode_produk" : "005","nama" : "Samsung Galaxy J7", "harga" : 3500000, "kuantitas" : 1 },
-    "006" : {"kode_produk" : "006","nama" : "Iphone 8 Plus", "harga" : 13000000, "kuantitas" : 1 },
-    "007" : {"kode_produk" : "007","nama" : "Xiaomi Mi A1", "harga" : 2700000, "kuantitas" : 1 },
-    "008" : {"kode_produk" : "008","nama" : "Redmi Note 5A", "harga" : 1500000, "kuantitas" : 1 },
-    "009" : {"kode_produk" : "009","nama" : "Oppo F7", "harga" : 4000000, "kuantitas" : 1 },
-    "010" : {"kode_produk" : "010","nama" : "Vivo V9", "harga" : 3400000, "kuantitas" : 1 }
-}
+const daftar_produk = [
+    {"kode_produk" : "001", "nama" : "Iphone X", "harga" : 15000000, "kuantitas" : 1 },
+    {"kode_produk" : "002","nama" : "Asus Zenfone 5", "harga" : 4000000, "kuantitas" : 1 },
+    {"kode_produk" : "003","nama" : "Xiaomi Redmi Note 5", "harga" : 3000000, "kuantitas" : 1 },
+    {"kode_produk" : "004","nama" : "Samsung Galaxy A6+", "harga" : 4500000, "kuantitas" : 1 },
+    {"kode_produk" : "005","nama" : "Samsung Galaxy J7", "harga" : 3500000, "kuantitas" : 1 },
+    {"kode_produk" : "006","nama" : "Iphone 8 Plus", "harga" : 13000000, "kuantitas" : 1 },
+    {"kode_produk" : "007","nama" : "Xiaomi Mi A1", "harga" : 2700000, "kuantitas" : 1 },
+    {"kode_produk" : "008","nama" : "Redmi Note 5A", "harga" : 1500000, "kuantitas" : 1 },
+    {"kode_produk" : "009","nama" : "Oppo F7", "harga" : 4000000, "kuantitas" : 1 },
+    {"kode_produk" : "010","nama" : "Vivo V9", "harga" : 3400000, "kuantitas" : 1 }
+];
 
 let cart = [];
 
 function tambahItemKeCart(item){
-    cart.push(daftar_produk[item]);
+
+    cart.push(findProduct(item));
+}
+
+function findProduct(param){
+    return daftar_produk.find(function (obj) { return obj.kode_produk === param; });
 }
 
 function addItemButton(){
     let val = document.getElementById("tambah").value;
-    if (val != "") {
+    if (val != "" && typeof findProduct(val) != "undefined") {
         document.querySelector("#listCart>tbody").innerHTML = "";
         tambahItemKeCart(val);
         document.getElementById("tambah").value = "";
@@ -34,10 +39,11 @@ function tampilkanIsiCart(){
         document.querySelector("#listCart>tbody").innerHTML += 
          `<tr>
              <td>${i + 1}</td>
-             <td>${v.kode_produk}</td>
+             <td class="kodeProd">${v.kode_produk}</td>
              <td>${v.nama}</td>
              <td>${v.harga}</td>
              <td>${v.kuantitas}</td>
+             <td class="hapusItem" onclick="hapusItemBelanja()">Hapus</td>
          </tr>
          `;
     }
@@ -52,4 +58,14 @@ function totalBelanja(){
     });
     document.querySelector("#totalBelanja").innerHTML = totalBelanja;
     console.log(totalBelanja);
+}
+
+function hapusItemBelanja(){
+    const kodeProd = event.target.parentNode.querySelector('.kodeProd').innerHTML;
+    // console.log(event.target.parentNode.querySelector('.kodeProd').innerHTML);
+
+    cart = cart.filter(item => item.kode_produk != kodeProd);
+    document.querySelector("#listCart>tbody").innerHTML = "";
+    tampilkanIsiCart();
+    totalBelanja();
 }
