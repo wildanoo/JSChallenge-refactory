@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cart Engine</title>
+</head>
+<body>
+    <h1>Cart Engine</h1>
+    <h3>Daftar produk</h3>
+    <table>
+        <thead>
+            <th>Kode Produk</th>
+            <th>Nama Produk</th>
+            <th>Harga</th>
+            <th>Kuantitas</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001</td>
+                <td>Iphone X</td>
+                <td>15000000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>Asus Zenfone 5</td>
+                <td>4000000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>Xiaomi Redmi Note 5</td>
+                <td>3000000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>004</td>
+                <td>Samsung Galaxy A6+</td>
+                <td>4500000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>005</td>
+                <td>Samsung Galaxy J7</td>
+                <td>3500000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>006</td>
+                <td>Iphone 8 Plus</td>
+                <td>13000000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>007</td>
+                <td>Xiaomi Mi A1</td>
+                <td>2700000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>008</td>
+                <td>Redmi Note 5A</td>
+                <td>1500000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>009</td>
+                <td>Oppo F7</td>
+                <td>4000000</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>010</td>
+                <td>Vivo V9</td>
+                <td>3400000</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+
+    <h3>Tambahkan Ke Cart</h3>
+    
+    <label for="tambah">Kode Produk</label>
+    <input type="text" id="tambah">
+    <button type="button" onclick="addItemButton()">Tambahkan Produk</button>
+
+    <br>
+    <br>
+
+    <h3>Isi Cart</h3>
+    <table id="listCart">
+        <thead>
+            <th>Nomor</th>
+            <th>Kode Produk</th>
+            <th>Nama Produk</th>
+            <th>Harga</th>
+            <th>Kuantitas</th>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+
+    <h3>Total Belanja</h3>
+    <h3 id="totalBelanja"></h3>
+
+    <script src="03.js"></script>
+</body>
+</html>
